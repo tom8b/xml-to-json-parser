@@ -31,10 +31,10 @@ namespace swi
 
                 FieldValidate(xmlObject);
 
-                if (!IsNumberOfFieldsValid(xmlObject, 1) ||
-                    !IsObjNamed(xmlObject) ||
+                if (!IsObjNamed(xmlObject) ||
                     !IsStringPrintable(xmlObject.Obj_Name) ||
-                    ContainsDoubleQuote(xmlObject.Obj_Name))
+                    ContainsDoubleQuote(xmlObject.Obj_Name) ||
+                    !IsNumberOfFieldsValid(xmlObject, 1) )
                 {
                     _xmlObjectList.XmlObjects.Remove(xmlObject);
                     continue;
