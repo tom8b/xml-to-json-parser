@@ -15,10 +15,9 @@ namespace swi
                 string input;
                 XmlObjectList xmlObjectList;
 
-                // Open the text file using a stream reader.
                 using (StreamReader streamReader = new StreamReader("input.xml"))
                 {
-                    input = "<root>" + streamReader.ReadToEnd() + "</root>"; // wrapuje wszystko rootem by moc wczytac jako xml
+                    input = "<root>" + streamReader.ReadToEnd() + "</root>"; 
                 }
 
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(XmlObjectList));

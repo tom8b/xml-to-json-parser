@@ -22,14 +22,6 @@ namespace swi
 
             foreach (var xmlObject in _xmlObjectList.XmlObjects.ToArray())
             {
-                #region uncomment to ignore objects that have unsupported keywords
-                //if(!AreObjectElementsSupported(item))
-                //{
-                // _xmlObjectList.XmlObjects.Remove(item);
-                //    continue;
-                //}
-                #endregion
-
                 FieldValidate(xmlObject);
 
                 if (!IsObjNamed(xmlObject) ||
@@ -64,14 +56,6 @@ namespace swi
         #endregion
 
         #region Object validate helpers
-
-        //private void AreObjNamesUnique()
-        //{
-        //    if (_xmlObjectList.XmlObjects.GroupBy(n => n.Obj_Name).Any(c => c.Count() > 1))
-        //    {
-        //        throw new Exception("Object names must be unique!");
-        //    }
-        //}
 
         private void AreObjNamesUnique()
         {
@@ -208,7 +192,6 @@ namespace swi
             return false;
         }
 
-        //zwraca true jesli slowo nie posiada non-printable charow
         private bool IsStringPrintable(string word)
         {
             if (Regex.IsMatch(word, @"\p{C}+"))
