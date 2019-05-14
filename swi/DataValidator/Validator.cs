@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -64,11 +65,30 @@ namespace swi
 
         #region Object validate helpers
 
+        //private void AreObjNamesUnique()
+        //{
+        //    if (_xmlObjectList.XmlObjects.GroupBy(n => n.Obj_Name).Any(c => c.Count() > 1))
+        //    {
+        //        throw new Exception("Object names must be unique!");
+        //    }
+        //}
+
         private void AreObjNamesUnique()
         {
-            if (_xmlObjectList.XmlObjects.GroupBy(n => n.Obj_Name).Any(c => c.Count() > 1))
+            var duplicatesGrouped = _xmlObjectList.XmlObjects
+                .GroupBy(o => o.Obj_Name)
+                .Where(c => c.Count() > 1);
+
+            var duplicates = duplicatesGrouped
+                .Select(d => d.Cast<XmlObject>()
+                .ToList());
+
+            foreach (var item in duplicates)
             {
-                throw new Exception("nazwy obiektow musza byc unikalne!");
+                foreach (var obj in item)
+                {
+                    _xmlObjectList.XmlObjects.Remove(obj);
+                }
             }
         }
 
