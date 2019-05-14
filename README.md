@@ -13,7 +13,8 @@ It ignores objects that:
 - have an unsupported type of data (can be string or int)
 - fields that have unsupported keywords
 - objects that are not correct
-- everything that contains non-printable characters
+- everything that contains non-printable characters</BR>
+
 Example input:
 ``` json
 <object>
@@ -53,8 +54,8 @@ Example input:
 </field>
 </object>
 ```
-```xml
 Example output:
+```xml
 {
 "hero_profile 1": {
 "favorite_fruit": "Truskawa",
